@@ -1646,12 +1646,11 @@ with st.expander("🎯 Advanced Features", expanded=False):
     ### Contact & Support:
     - **Developer**: Sourish Dey
     - **Portfolio**: https://sourishdeyportfolio.vercel.app/
-    - **Email**: sourishdey.contact@gmail.com
-    - **GitHub**: github.com/sourishdey
+    - **Email**: sourish713321@gmail.com
+    - **GitHub**: https://github.com/sourishdey2005
     
     ---
     
-    *Note: This is a demonstration platform. Actual business data should be used for real-world applications.*
     """)
 
 # Add performance metrics
@@ -1672,3 +1671,4 @@ auto_refresh = st.sidebar.checkbox("Auto-refresh data", value=False)
 if auto_refresh:
     st.sidebar.info("Auto-refresh enabled")
     st.rerun()
+
