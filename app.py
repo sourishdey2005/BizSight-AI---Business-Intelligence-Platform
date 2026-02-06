@@ -56,6 +56,19 @@ st.markdown("""
         text-decoration: none;
     }
     
+    /* Infosys Logo */
+    .infosys-logo {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-logo img {
+        width: 80%;
+        max-width: 200px;
+        height: auto;
+        border-radius: 8px;
+    }
+    
     /* Section Headers */
     .section-header {
         font-size: 1.8rem;
@@ -179,25 +192,6 @@ st.markdown("""
         background: #E5E7EB;
         margin: 2rem 0;
     }
-    
-    /* Custom tabs */
-    .custom-tab {
-        background: #F9FAFB;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        margin: 0.25rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .custom-tab:hover {
-        background: #E5E7EB;
-    }
-    
-    .custom-tab.active {
-        background: #3B82F6;
-        color: white;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -289,6 +283,14 @@ def align_schema(df):
 # ============================================================
 # SIDEBAR
 # ============================================================
+# Add Infosys logo
+st.sidebar.markdown("""
+<div class='infosys-logo'>
+    <img src='https://imgs.search.brave.com/hRRODIPyRrFGigKCvwNHXaijoLJ3bGB0NcAG49yS-0A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/dHlwLnVzL2ZpbGUv/aW5mb3N5cy5zdmc' 
+         alt='Infosys Logo'>
+</div>
+""", unsafe_allow_html=True)
+
 st.sidebar.markdown("""
 <div style='text-align: center; margin-bottom: 1rem;'>
     <h2 style='color: #1E3A8A; font-size: 1.8rem; font-weight: 700;'>BizSight AI</h2>
@@ -426,7 +428,7 @@ else:
     np.random.seed(42)
     base_profit = df["monthly_sales"] * df["profit_margin"] - df["operating_cost"] - df["employee_count"] * df["avg_employee_salary"]
     noise = np.random.normal(0, 0.1 * abs(base_profit).mean(), len(df))
-    df["predicted_profit"] = base_profit + noise
+    df["predicted_profit"] = np.maximum(base_profit + noise, 0)  # Ensure non-negative for visualization
 
 df["risk_band"] = pd.qcut(df["predicted_profit"], 3, labels=["Low", "Medium", "High"])
 
@@ -737,14 +739,17 @@ with viz_tabs[0]:
         
         fig = go.Figure()
         for idx, row in radar_metrics.iterrows():
+            # Normalize values for radar chart
+            normalized_values = [
+                row['monthly_sales'] / radar_metrics['monthly_sales'].max(),
+                row['sales_per_sqft'] / radar_metrics['sales_per_sqft'].max(),
+                row['sales_per_employee'] / radar_metrics['sales_per_employee'].max(),
+                row['conversion_rate'] / radar_metrics['conversion_rate'].max(),
+                row['avg_transaction_value'] / radar_metrics['avg_transaction_value'].max()
+            ]
+            
             fig.add_trace(go.Scatterpolar(
-                r=[
-                    row['monthly_sales'] / radar_metrics['monthly_sales'].max(),
-                    row['sales_per_sqft'] / radar_metrics['sales_per_sqft'].max(),
-                    row['sales_per_employee'] / radar_metrics['sales_per_employee'].max(),
-                    row['conversion_rate'] / radar_metrics['conversion_rate'].max(),
-                    row['avg_transaction_value'] / radar_metrics['avg_transaction_value'].max()
-                ],
+                r=normalized_values,
                 theta=['Total Sales', 'Sales/SqFt', 'Sales/Emp', 'Conv Rate', 'Avg Transaction'],
                 fill='toself',
                 name=row['business_type']
@@ -803,11 +808,17 @@ with viz_tabs[1]:
             st.plotly_chart(fig, use_container_width=True)
     
     with col4:
-        # 9. Profit Efficiency Matrix
+        # 9. Profit Efficiency Matrix - FIXED VERSION
         if all(col in df.columns for col in ['employee_efficiency', 'sales_per_sqft', 'predicted_profit']):
             df_sample = df.sample(min(3000, len(df)))
+            
+            # Use absolute profit values for size to avoid negative values
+            profit_sizes = np.abs(df_sample['predicted_profit'])
+            # Normalize sizes for better visualization
+            normalized_sizes = (profit_sizes - profit_sizes.min()) / (profit_sizes.max() - profit_sizes.min()) * 30 + 5
+            
             fig = px.scatter(df_sample, x='employee_efficiency', y='sales_per_sqft',
-                            size='predicted_profit',
+                            size=normalized_sizes,
                             color='predicted_profit',
                             title='Profit Efficiency Matrix',
                             labels={'employee_efficiency': 'Employee Efficiency', 
@@ -1220,7 +1231,8 @@ with viz_tabs[5]:
     with col1:
         # 26. Customer Value Analysis
         if all(col in df.columns for col in ['customer_rating', 'monthly_sales', 'conversion_rate']):
-            fig = px.scatter_3d(df.sample(min(2000, len(df))),
+            df_sample = df.sample(min(2000, len(df)))
+            fig = px.scatter_3d(df_sample,
                                x='customer_rating',
                                y='conversion_rate',
                                z='monthly_sales',
@@ -1228,7 +1240,8 @@ with viz_tabs[5]:
                                title='3D: Customer Rating × Conversion × Sales',
                                labels={'customer_rating': 'Customer Rating',
                                       'conversion_rate': 'Conversion Rate',
-                                      'monthly_sales': 'Monthly Sales'},
+                                      'monthly_sales': 'Monthly Sales',
+                                      'predicted_profit': 'Profit'},
                                template='plotly_white',
                                color_continuous_scale='Viridis')
             st.plotly_chart(fig, use_container_width=True)
@@ -1306,16 +1319,18 @@ with viz_tabs[5]:
     
     if all(col in df.columns for col in ['risk_band', 'profit_margin', 'customer_rating', 'conversion_rate']):
         health_scores = []
-        for idx, row in df.sample(min(100, len(df))).iterrows():
-            # Calculate composite health score
+        sample_df = df.sample(min(100, len(df)))
+        
+        for idx, row in sample_df.iterrows():
+            # Calculate composite health score (0-100)
             score = (
-                (row['profit_margin'] / 0.3) * 0.3 +  # Profit margin contribution
-                (row['customer_rating'] / 5) * 0.25 +  # Customer rating contribution
-                (row['conversion_rate'] / 0.4) * 0.25 +  # Conversion rate contribution
-                (1 if row['risk_band'] == 'Low' else 0.5 if row['risk_band'] == 'Medium' else 0) * 0.2  # Risk contribution
+                (row['profit_margin'] / 0.3) * 0.3 +  # Profit margin contribution (max 30%)
+                (row['customer_rating'] / 5) * 0.25 +  # Customer rating contribution (max 25%)
+                (row['conversion_rate'] / 0.4) * 0.25 +  # Conversion rate contribution (max 25%)
+                (1 if row['risk_band'] == 'Low' else 0.5 if row['risk_band'] == 'Medium' else 0) * 0.2  # Risk contribution (max 20%)
             ) * 100
             
-            health_scores.append(score)
+            health_scores.append(min(score, 100))  # Cap at 100
         
         health_df = pd.DataFrame({'Health Score': health_scores})
         
@@ -1332,7 +1347,7 @@ with viz_tabs[5]:
         
         fig.add_trace(
             go.Scatter(x=health_scores,
-                      y=df.sample(min(100, len(df)))['predicted_profit'],
+                      y=sample_df['predicted_profit'],
                       mode='markers',
                       marker=dict(size=8, color=COLOR_PALETTE['primary'], opacity=0.7),
                       name='Health vs Profit'),
@@ -1447,6 +1462,9 @@ with st.container():
             predicted_profit = model.predict(sim_df)[0]
         else:
             predicted_profit = expected_sales * 0.2 - marketing_spend - salary_cost
+        
+        # Ensure non-negative profit for display
+        predicted_profit = max(predicted_profit, 0)
         
         # Display results
         st.markdown("#### Simulation Results")
@@ -1628,12 +1646,11 @@ with st.expander("🎯 Advanced Features", expanded=False):
     ### Contact & Support:
     - **Developer**: Sourish Dey
     - **Portfolio**: https://sourishdeyportfolio.vercel.app/
-    - **Email**: sourishdey.contact@gmail.com
-    - **GitHub**: github.com/sourishdey
+    - **Email**: sourish713321@gmail.com
+    - **GitHub**: https://github.com/sourishdey2005
     
     ---
     
-    *Note: This is a demonstration platform. Actual business data should be used for real-world applications.*
     """)
 
 # Add performance metrics
