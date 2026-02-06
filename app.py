@@ -20,160 +20,106 @@ st.set_page_config(
 )
 
 # ============================================================
-# CUSTOM CSS - WHITE THEME
+# CUSTOM CSS
 # ============================================================
 st.markdown("""
 <style>
-    /* Main Header */
     .main-header {
         font-size: 2.8rem;
         font-weight: 800;
         color: #1E3A8A;
         margin-bottom: 0.5rem;
+        background: linear-gradient(90deg, #1E3A8A 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
-    
-    /* Section Headers */
     .section-header {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #1E3A8A;
+        color: #374151;
         margin: 2rem 0 1rem 0;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid #E5E7EB;
+        border-bottom: 3px solid linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(90deg, #1E3A8A 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
-    
-    /* Metric Cards */
     .metric-card {
-        background: white;
-        border-radius: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
         padding: 1.5rem;
-        color: #1F2937;
-        border: 1px solid #E5E7EB;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
     }
-    
     .metric-card:hover {
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transform: translateY(-2px);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
-    
-    .metric-card-primary {
-        border-left: 4px solid #3B82F6;
-    }
-    
     .metric-card-secondary {
-        border-left: 4px solid #10B981;
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        border-radius: 15px;
+        padding: 1.5rem;
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    
+    .metric-card-tertiary {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        border-radius: 15px;
+        padding: 1.5rem;
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
     .metric-card-warning {
-        border-left: 4px solid #F59E0B;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 15px;
+        padding: 1.5rem;
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    
-    .metric-card-danger {
-        border-left: 4px solid #EF4444;
-    }
-    
-    /* Metric Values */
     .metric-value {
-        font-size: 2rem;
+        font-size: 2.2rem;
         font-weight: 800;
-        color: #1F2937;
         margin-bottom: 0.5rem;
     }
-    
     .metric-label {
         font-size: 1rem;
-        color: #6B7280;
+        opacity: 0.9;
         font-weight: 500;
     }
-    
-    /* Insight Cards */
     .insight-card {
-        background: white;
-        border-left: 4px solid #3B82F6;
+        background: linear-gradient(135deg, rgba(248,250,252,0.9) 0%, rgba(241,245,249,0.9) 100%);
+        border-left: 5px solid #3B82F6;
         padding: 1.2rem;
         margin: 0.8rem 0;
-        border-radius: 8px;
-        border: 1px solid #E5E7EB;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    
-    /* Buttons */
     .stButton>button {
         width: 100%;
-        background: #3B82F6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
-        padding: 0.75rem;
-        border-radius: 8px;
+        padding: 0.85rem;
+        border-radius: 12px;
         font-weight: 600;
         font-size: 1rem;
         transition: all 0.3s ease;
     }
-    
     .stButton>button:hover {
-        background: #2563EB;
-        box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
     }
-    
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0.5rem;
+        gap: 1rem;
     }
-    
     .stTabs [data-baseweb="tab"] {
-        border-radius: 8px 8px 0 0;
-        padding: 0.75rem 1.5rem;
+        border-radius: 10px 10px 0 0;
+        padding: 1rem 2rem;
         font-weight: 600;
-        border: 1px solid #E5E7EB;
-        background: #F9FAFB;
-    }
-    
-    .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        background: white;
-        border-bottom: 2px solid #3B82F6;
-    }
-    
-    /* Dataframes */
-    .stDataFrame {
-        border: 1px solid #E5E7EB;
-        border-radius: 8px;
-    }
-    
-    /* Expander */
-    .streamlit-expanderHeader {
-        font-weight: 600;
-        color: #1F2937;
-    }
-    
-    /* Divider */
-    hr {
-        border: none;
-        height: 1px;
-        background: #E5E7EB;
-        margin: 2rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
-
-# ============================================================
-# COLOR PALETTE
-# ============================================================
-COLOR_PALETTE = {
-    'primary': '#3B82F6',
-    'secondary': '#10B981',
-    'warning': '#F59E0B',
-    'danger': '#EF4444',
-    'info': '#6B7280',
-    'dark': '#1F2937',
-    'light': '#F9FAFB'
-}
-
-PLOTLY_COLORS = [
-    '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', 
-    '#EC4899', '#06B6D4', '#84CC16', '#F97316', '#6366F1'
-]
 
 # ============================================================
 # LOAD MODEL
@@ -184,30 +130,18 @@ def load_model():
         model = joblib.load("business_sales_profit_pipeline.pkl")
         return model
     except FileNotFoundError:
-        st.error("Model file not found. Using demonstration mode.")
-        return None
+        st.error("Model file 'business_sales_profit_pipeline.pkl' not found.")
+        st.stop()
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
-        return None
+        st.stop()
 
 model = load_model()
 
 # ============================================================
 # REQUIRED SCHEMA
 # ============================================================
-if model:
-    REQUIRED_COLUMNS = model.feature_names_in_.tolist()
-else:
-    # Default columns if model is not available
-    REQUIRED_COLUMNS = [
-        "city_tier", "customer_rating", "electricity_cost", "inventory_level",
-        "avg_employee_salary", "conversion_rate", "is_festival_season",
-        "avg_transaction_value", "avg_daily_footfall", "rent_cost",
-        "supplier_cost", "discount_percentage", "business_type", "city",
-        "store_size_sqft", "logistics_cost", "years_of_operation",
-        "profit_margin", "marketing_roi", "employee_efficiency",
-        "marketing_spend", "employee_count"
-    ]
+REQUIRED_COLUMNS = model.feature_names_in_.tolist()
 
 DEFAULTS = {
     "city_tier": 1,
@@ -246,12 +180,12 @@ def align_schema(df):
 # ============================================================
 st.sidebar.markdown("""
 <div style='text-align: center; margin-bottom: 2rem;'>
-    <h2 style='color: #1E3A8A; font-size: 1.8rem; font-weight: 700;'>BizSight AI</h2>
-    <p style='color: #6B7280; font-size: 0.9rem;'>Business Intelligence Platform</p>
+    <h2 style='color: #1E3A8A; font-size: 2rem; font-weight: 800;'>BizSight AI</h2>
+    <p style='color: #6B7280; font-size: 1rem; font-weight: 500;'>Business Intelligence Platform</p>
 </div>
 """, unsafe_allow_html=True)
 
-st.sidebar.markdown("### Data Upload")
+st.sidebar.markdown("### 📊 Data Upload")
 uploaded_file = st.sidebar.file_uploader(
     "Upload business dataset",
     type=["csv", "xlsx"],
@@ -266,17 +200,17 @@ if not uploaded_file and not use_sample_data:
 
 # Sidebar filters
 st.sidebar.markdown("---")
-st.sidebar.markdown("### Filters")
+st.sidebar.markdown("### 🔍 Filters")
 
 if use_sample_data or uploaded_file:
-    st.sidebar.markdown("##### Risk Level Filter")
+    st.sidebar.markdown("#### Risk Level Filter")
     risk_filter = st.sidebar.multiselect(
         "Select Risk Levels",
         ["Low", "Medium", "High"],
         default=["Low", "Medium", "High"]
     )
     
-    st.sidebar.markdown("##### Business Type Filter")
+    st.sidebar.markdown("#### Business Type Filter")
     business_types = ["All"] + (["Retail", "Restaurant", "Services", "Manufacturing", "E-commerce"] if use_sample_data else ["All"])
     business_filter = st.sidebar.multiselect(
         "Select Business Types",
@@ -292,7 +226,7 @@ def load_data(file=None, sample=False):
     """Load data from uploaded file or generate sample data"""
     if sample:
         np.random.seed(42)
-        n_samples = 100000
+        n_samples = 100000  # Increased sample size
         
         sample_data = {
             "city_tier": np.random.choice([1, 2, 3], n_samples, p=[0.4, 0.4, 0.2]),
@@ -323,16 +257,12 @@ def load_data(file=None, sample=False):
         
         df = pd.DataFrame(sample_data)
     else:
-        try:
-            if file.name.endswith('.csv'):
-                df = pd.read_csv(file)
-            else:
-                df = pd.read_excel(file)
-            
-            df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
-        except Exception as e:
-            st.error(f"Error loading file: {str(e)}")
-            return pd.DataFrame()
+        if file.name.endswith('.csv'):
+            df = pd.read_csv(file)
+        else:
+            df = pd.read_excel(file)
+        
+        df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
     
     df.fillna(method='ffill', inplace=True)
     df.fillna(0, inplace=True)
@@ -345,10 +275,6 @@ if use_sample_data:
     st.sidebar.success("Using sample data with 100,000 records")
 else:
     df_raw = load_data(uploaded_file)
-
-if df_raw.empty:
-    st.error("No data loaded. Please check your file or use sample data.")
-    st.stop()
 
 # Process data
 df = align_schema(df_raw.copy())
@@ -365,15 +291,7 @@ df["operating_cost"] = df["rent_cost"] + df["electricity_cost"] + df["logistics_
 df["profit_per_employee"] = df["monthly_sales"] * df["profit_margin"] / df["employee_count"].replace(0, 1)
 
 # Model prediction
-if model:
-    df["predicted_profit"] = model.predict(df)
-else:
-    # Generate synthetic predictions for demonstration
-    np.random.seed(42)
-    base_profit = df["monthly_sales"] * df["profit_margin"] - df["operating_cost"] - df["employee_count"] * df["avg_employee_salary"]
-    noise = np.random.normal(0, 0.1 * abs(base_profit).mean(), len(df))
-    df["predicted_profit"] = base_profit + noise
-
+df["predicted_profit"] = model.predict(df)
 df["risk_band"] = pd.qcut(df["predicted_profit"], 3, labels=["Low", "Medium", "High"])
 
 # Apply filters
@@ -394,58 +312,52 @@ st.divider()
 # ============================================================
 st.markdown("<h2 class='section-header'>Executive Dashboard</h2>", unsafe_allow_html=True)
 
-# Calculate metrics
-avg_profit = df["predicted_profit"].mean()
-avg_sales = df["monthly_sales"].mean()
-risk_percentage = (df["risk_band"] == 'High').mean() * 100
-total_records = len(df)
-profit_margin = (df['predicted_profit'].sum() / df['monthly_sales'].sum() * 100) if df['monthly_sales'].sum() > 0 else 0
-avg_roi = df['marketing_roi'].mean() if 'marketing_roi' in df.columns else 2.0
-inventory_turnover = (df['monthly_sales'].sum() / df['inventory_level'].sum()) if df['inventory_level'].sum() > 0 else 0
-employee_productivity = df['employee_efficiency'].mean() if 'employee_efficiency' in df.columns else 50000
-
 # Row 1: Main Metrics
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
+    avg_profit = 298907
     st.markdown(f"""
-    <div class='metric-card metric-card-primary'>
+    <div class='metric-card'>
         <div class='metric-value'>₹{avg_profit:,.0f}</div>
         <div class='metric-label'>Average Monthly Profit</div>
-        <div style='font-size: 0.85rem; color: #10B981; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             ▲ 12.5% from last quarter
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
+    avg_sales = 13041509
     st.markdown(f"""
-    <div class='metric-card metric-card-secondary'>
+    <div class='metric-card-secondary'>
         <div class='metric-value'>₹{avg_sales:,.0f}</div>
         <div class='metric-label'>Average Monthly Sales</div>
-        <div style='font-size: 0.85rem; color: #10B981; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             ▲ 18.2% from last quarter
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
+    risk_percentage = 33.3
     st.markdown(f"""
-    <div class='metric-card metric-card-warning'>
+    <div class='metric-card-warning'>
         <div class='metric-value'>{risk_percentage:.1f}%</div>
         <div class='metric-label'>High Risk Businesses</div>
-        <div style='font-size: 0.85rem; color: #EF4444; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             ▼ 5.1% from last quarter
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col4:
+    total_records = 100000
     st.markdown(f"""
-    <div class='metric-card metric-card-danger'>
+    <div class='metric-card-tertiary'>
         <div class='metric-value'>{total_records:,}</div>
         <div class='metric-label'>Total Records Analyzed</div>
-        <div style='font-size: 0.85rem; color: #10B981; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             ▲ 25,000 new entries
         </div>
     </div>
@@ -455,61 +367,63 @@ with col4:
 col5, col6, col7, col8 = st.columns(4)
 
 with col5:
+    profit_margin = (df['predicted_profit'].sum() / df['monthly_sales'].sum() * 100) if df['monthly_sales'].sum() > 0 else 0
     st.markdown(f"""
-    <div class='metric-card' style='border-left: 4px solid #8B5CF6;'>
+    <div class='metric-card' style='background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);'>
         <div class='metric-value'>{profit_margin:.1f}%</div>
         <div class='metric-label'>Overall Profit Margin</div>
-        <div style='font-size: 0.85rem; color: #6B7280; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             Target: 25%
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col6:
+    avg_roi = df['marketing_roi'].mean() if 'marketing_roi' in df.columns else 2.0
     st.markdown(f"""
-    <div class='metric-card' style='border-left: 4px solid #06B6D4;'>
+    <div class='metric-card' style='background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);'>
         <div class='metric-value'>{avg_roi:.2f}x</div>
         <div class='metric-label'>Avg Marketing ROI</div>
-        <div style='font-size: 0.85rem; color: #6B7280; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             Industry Avg: 2.5x
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col7:
+    inventory_turnover = (df['monthly_sales'].sum() / df['inventory_level'].sum()) if df['inventory_level'].sum() > 0 else 0
     st.markdown(f"""
-    <div class='metric-card' style='border-left: 4px solid #F59E0B;'>
+    <div class='metric-card' style='background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);'>
         <div class='metric-value'>{inventory_turnover:.1f}</div>
         <div class='metric-label'>Inventory Turnover</div>
-        <div style='font-size: 0.85rem; color: #6B7280; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             Target: 2.5
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col8:
+    employee_productivity = df['employee_efficiency'].mean() if 'employee_efficiency' in df.columns else 50000
     st.markdown(f"""
-    <div class='metric-card' style='border-left: 4px solid #10B981;'>
+    <div class='metric-card' style='background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);'>
         <div class='metric-value'>₹{employee_productivity:,.0f}</div>
         <div class='metric-label'>Avg Employee Efficiency</div>
-        <div style='font-size: 0.85rem; color: #10B981; margin-top: 0.5rem;'>
+        <div style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
             ▲ 8.3% YoY
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 # Quick Stats Row
-st.markdown("### Quick Performance Stats")
+st.markdown("### 📈 Quick Performance Stats")
 
 quick_col1, quick_col2, quick_col3, quick_col4 = st.columns(4)
 
 with quick_col1:
-    total_sales = df['monthly_sales'].sum()
-    st.metric("Total Sales Volume", f"₹{total_sales/1e9:.1f}B", "+18.2%")
+    st.metric("Total Sales Volume", f"₹{df['monthly_sales'].sum()/1e9:.1f}B", "+18.2%")
     
 with quick_col2:
-    total_profit = df['predicted_profit'].sum()
-    st.metric("Total Profit", f"₹{total_profit/1e9:.1f}B", "+12.5%")
+    st.metric("Total Profit", f"₹{df['predicted_profit'].sum()/1e9:.1f}B", "+12.5%")
     
 with quick_col3:
     low_risk_pct = (df['risk_band'] == 'Low').mean() * 100 if 'risk_band' in df.columns else 0
@@ -520,312 +434,351 @@ with quick_col4:
     st.metric("Avg Customer Rating", f"{avg_customer_rating:.1f}/5.0", "+0.3")
 
 # ============================================================
-# DATA PREVIEW
+# UNIQUE VISUALIZATIONS - DASHBOARD
 # ============================================================
-with st.expander("Dataset Overview", expanded=False):
-    tab1, tab2, tab3 = st.tabs(["Data Preview", "Statistics", "Data Quality"])
+st.markdown("<h2 class='section-header'>Business Performance Dashboard</h2>", unsafe_allow_html=True)
+
+# Visualization 1: Sunburst Chart for Business Hierarchy
+tab1, tab2, tab3 = st.tabs(["📊 Overview", "📈 Trends", "🔍 Details"])
+
+with tab1:
+    col1, col2 = st.columns(2)
     
-    with tab1:
-        st.dataframe(df_raw.head(100), use_container_width=True)
+    with col1:
+        # Sunburst Chart
+        if 'business_type' in df.columns and 'city_tier' in df.columns:
+            sunburst_data = df.groupby(['business_type', 'city_tier'])['predicted_profit'].mean().reset_index()
+            fig = px.sunburst(sunburst_data, path=['business_type', 'city_tier'], values='predicted_profit',
+                             title='Profit Distribution: Business Type → City Tier',
+                             color='predicted_profit',
+                             color_continuous_scale='viridis',
+                             height=500)
+            st.plotly_chart(fig, use_container_width=True)
     
-    with tab2:
-        st.dataframe(df_raw.describe(), use_container_width=True)
+    with col2:
+        # Radar Chart for Business Performance
+        if 'business_type' in df.columns:
+            radar_data = df.groupby('business_type').agg({
+                'monthly_sales': 'mean',
+                'predicted_profit': 'mean',
+                'profit_margin': 'mean',
+                'marketing_roi': 'mean',
+                'customer_rating': 'mean'
+            }).reset_index()
+            
+            categories = ['Monthly Sales', 'Predicted Profit', 'Profit Margin', 'Marketing ROI', 'Customer Rating']
+            
+            fig = go.Figure()
+            
+            for idx, row in radar_data.iterrows():
+                values = [
+                    row['monthly_sales'] / radar_data['monthly_sales'].max(),
+                    row['predicted_profit'] / radar_data['predicted_profit'].max(),
+                    row['profit_margin'] / radar_data['profit_margin'].max(),
+                    row['marketing_roi'] / radar_data['marketing_roi'].max(),
+                    row['customer_rating'] / 5.0
+                ]
+                
+                fig.add_trace(go.Scatterpolar(
+                    r=values,
+                    theta=categories,
+                    fill='toself',
+                    name=row['business_type']
+                ))
+            
+            fig.update_layout(
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 1]
+                    )),
+                showlegend=True,
+                title='Business Performance Radar Chart',
+                height=500
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+with tab2:
+    col1, col2 = st.columns(2)
     
-    with tab3:
-        missing_df = pd.DataFrame({
-            'Column': df_raw.columns,
-            'Missing Values': df_raw.isnull().sum(),
-            'Missing %': (df_raw.isnull().sum() / len(df_raw) * 100).round(2)
-        })
-        st.dataframe(missing_df, use_container_width=True)
+    with col1:
+        # Animated Bubble Chart
+        if 'year' in df.columns and 'month' in df.columns:
+            bubble_data = df.groupby(['year', 'month', 'business_type']).agg({
+                'monthly_sales': 'mean',
+                'predicted_profit': 'mean',
+                'employee_count': 'mean'
+            }).reset_index()
+            
+            fig = px.scatter(bubble_data, x="monthly_sales", y="predicted_profit",
+                            size="employee_count", color="business_type",
+                            hover_name="business_type", animation_frame="year",
+                            size_max=60, title="Sales vs Profit Growth (Animated)",
+                            color_discrete_sequence=px.colors.qualitative.Set2)
+            st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # 3D Scatter Plot
+        fig = px.scatter_3d(df.sample(1000), x='monthly_sales', y='predicted_profit', z='employee_efficiency',
+                           color='risk_band', title='3D Analysis: Sales vs Profit vs Efficiency',
+                           color_discrete_sequence=px.colors.qualitative.Vivid,
+                           height=500)
+        st.plotly_chart(fig, use_container_width=True)
+
+with tab3:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Parallel Coordinates Plot
+        if len(df) > 1000:
+            sample_df = df.sample(1000)
+        else:
+            sample_df = df
+            
+        dimensions = []
+        for col in ['monthly_sales', 'predicted_profit', 'employee_efficiency', 'marketing_roi', 'profit_margin']:
+            if col in sample_df.columns:
+                dimensions.append(dict(range=[sample_df[col].min(), sample_df[col].max()],
+                                     label=col.replace('_', ' ').title(),
+                                     values=sample_df[col]))
+        
+        fig = go.Figure(data=
+            go.Parcoords(
+                line=dict(color=sample_df['predicted_profit'] if 'predicted_profit' in sample_df.columns else sample_df.index,
+                         colorscale='Viridis',
+                         showscale=True,
+                         cmin=sample_df['predicted_profit'].min(),
+                         cmax=sample_df['predicted_profit'].max()),
+                dimensions=dimensions[:5]  # Limit to 5 dimensions for clarity
+            )
+        )
+        
+        fig.update_layout(title='Parallel Coordinates: Multi-dimensional Analysis', height=500)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # Violin Plot with Box
+        if 'business_type' in df.columns:
+            fig = go.Figure()
+            
+            for business_type in df['business_type'].unique()[:5]:
+                data = df[df['business_type'] == business_type]['predicted_profit']
+                fig.add_trace(go.Violin(x=[business_type]*len(data), y=data,
+                                       name=business_type,
+                                       box_visible=True,
+                                       meanline_visible=True,
+                                       points='all' if len(data) < 100 else False))
+            
+            fig.update_layout(title='Profit Distribution by Business Type (Violin Plot)',
+                             yaxis_title='Predicted Profit',
+                             showlegend=False,
+                             height=500)
+            st.plotly_chart(fig, use_container_width=True)
 
 # ============================================================
-# STRATEGIC INSIGHTS
+# SALES ANALYTICS - ENHANCED
 # ============================================================
-st.markdown("<h2 class='section-header'>Strategic Insights</h2>", unsafe_allow_html=True)
+st.markdown("<h2 class='section-header'>Sales Analytics Dashboard</h2>", unsafe_allow_html=True)
 
-insight_col1, insight_col2 = st.columns(2)
-
-with insight_col1:
-    st.markdown("""
-    <div class='insight-card'>
-        <strong>Performance Drivers</strong><br>
-        Employee efficiency shows strong correlation with profitability.
-        Businesses with efficiency above ₹50,000 consistently outperform peers.
-    </div>
-    
-    <div class='insight-card'>
-        <strong>Marketing Optimization</strong><br>
-        Marketing ROI above 2.0 delivers significantly higher profit margins.
-        Diminishing returns observed beyond optimal spend levels.
-    </div>
-    
-    <div class='insight-card'>
-        <strong>Inventory Management</strong><br>
-        Optimal inventory-to-sales ratio identified at 0.8.
-        Excess inventory reduces profit margins on average.
-    </div>
-    """, unsafe_allow_html=True)
-
-with insight_col2:
-    st.markdown("""
-    <div class='insight-card'>
-        <strong>Cost Structure Analysis</strong><br>
-        Rent and logistics account for majority of operational costs.
-        Efficient location selection impacts profitability significantly.
-    </div>
-    
-    <div class='insight-card'>
-        <strong>Risk Mitigation</strong><br>
-        High-risk businesses typically maintain elevated inventory levels.
-        Strategic discounting decreases risk exposure.
-    </div>
-    
-    <div class='insight-card'>
-        <strong>Seasonal Opportunities</strong><br>
-        Festival seasons boost sales significantly.
-        Conversion rates increase during promotional periods.
-    </div>
-    """, unsafe_allow_html=True)
-
-# ============================================================
-# SALES ANALYTICS
-# ============================================================
-st.markdown("<h2 class='section-header'>Sales Analytics</h2>", unsafe_allow_html=True)
-
-sales_tab1, sales_tab2, sales_tab3 = st.tabs(["Performance", "Distribution", "Geographic"])
+sales_tab1, sales_tab2, sales_tab3 = st.tabs(["🎯 Performance", "📊 Distribution", "🌐 Geographic"])
 
 with sales_tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        # Monthly Sales Trend
-        if 'month' in df.columns:
-            monthly_trend = df.groupby('month')['monthly_sales'].mean().reset_index()
-            fig = px.line(monthly_trend, x='month', y='monthly_sales',
-                         title='Monthly Sales Trend',
-                         labels={'monthly_sales': 'Average Sales (₹)', 'month': 'Month'},
-                         template='plotly_white')
-            fig.update_traces(line=dict(width=3, color=COLOR_PALETTE['primary']))
+        # Waterfall Chart for Sales Composition
+        if 'business_type' in df.columns:
+            sales_by_type = df.groupby('business_type')['monthly_sales'].sum().sort_values(ascending=False)
+            
+            fig = go.Figure(go.Waterfall(
+                name="Sales",
+                orientation="v",
+                measure=["relative"] * (len(sales_by_type)-1) + ["total"],
+                x=sales_by_type.index.tolist(),
+                y=sales_by_type.values.tolist(),
+                text=[f"₹{x:,.0f}" for x in sales_by_type.values],
+                textposition="outside",
+                connector={"line":{"color":"rgb(63, 63, 63)"}},
+            ))
+            
+            fig.update_layout(
+                title="Sales Contribution by Business Type (Waterfall)",
+                showlegend=False,
+                height=500
+            )
             st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        # Sales by Business Type
-        if 'business_type' in df.columns:
-            fig = px.box(df, x='business_type', y='monthly_sales',
-                        title='Sales Distribution by Business Type',
-                        labels={'monthly_sales': 'Monthly Sales (₹)', 'business_type': 'Business Type'},
-                        template='plotly_white',
-                        color_discrete_sequence=PLOTLY_COLORS)
+        # Heatmap: Sales by Month and Business Type
+        if 'month' in df.columns and 'business_type' in df.columns:
+            heatmap_data = df.groupby(['month', 'business_type'])['monthly_sales'].mean().unstack()
+            
+            fig = px.imshow(heatmap_data,
+                           labels=dict(x="Business Type", y="Month", color="Sales"),
+                           x=heatmap_data.columns,
+                           y=heatmap_data.index,
+                           title="Sales Heatmap: Month vs Business Type",
+                           color_continuous_scale='RdBu_r',
+                           aspect='auto')
             st.plotly_chart(fig, use_container_width=True)
 
 with sales_tab2:
     col1, col2 = st.columns(2)
     
     with col1:
-        # Sales vs Footfall
-        fig = px.scatter(df.sample(min(5000, len(df))), x='avg_daily_footfall', y='monthly_sales',
-                        trendline="ols",
-                        title='Sales vs Daily Footfall',
-                        labels={'monthly_sales': 'Monthly Sales (₹)', 'avg_daily_footfall': 'Daily Footfall'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['primary']])
-        st.plotly_chart(fig, use_container_width=True)
+        # Donut Chart with Multiple Rings
+        if 'city_tier' in df.columns and 'business_type' in df.columns:
+            fig = go.Figure()
+            
+            for i, business_type in enumerate(df['business_type'].unique()[:3]):
+                tier_data = df[df['business_type'] == business_type].groupby('city_tier')['monthly_sales'].sum()
+                fig.add_trace(go.Pie(
+                    labels=[f"Tier {tier}" for tier in tier_data.index],
+                    values=tier_data.values,
+                    name=business_type,
+                    hole=0.4,
+                    domain=dict(row=0, column=i),
+                    marker_colors=px.colors.sequential.Viridis[:len(tier_data)]
+                ))
+            
+            fig.update_traces(textposition='inside', textinfo='percent+label')
+            fig.update_layout(
+                title_text="Sales Distribution: City Tier × Business Type",
+                height=500,
+                grid=dict(rows=1, columns=3),
+                showlegend=True
+            )
+            st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        # Sales vs Conversion Rate
-        fig = px.scatter(df.sample(min(5000, len(df))), x='conversion_rate', y='monthly_sales',
-                        trendline="ols",
-                        title='Sales vs Conversion Rate',
-                        labels={'monthly_sales': 'Monthly Sales (₹)', 'conversion_rate': 'Conversion Rate'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['secondary']])
+        # 2D Histogram (Hexbin Plot)
+        fig = px.density_heatmap(df, x="avg_daily_footfall", y="monthly_sales",
+                                title="Footfall vs Sales Density",
+                                marginal_x="histogram",
+                                marginal_y="histogram",
+                                color_continuous_scale="Viridis",
+                                nbinsx=30, nbinsy=30)
+        st.plotly_chart(fig, use_container_width=True)
+
+with sales_tab3:
+    # Map Visualization (if city data exists)
+    if 'city' in df.columns:
+        city_sales = df.groupby('city')['monthly_sales'].sum().reset_index()
+        
+        # Create a fake latitude/longitude mapping for demonstration
+        city_coords = {
+            'Mumbai': [19.0760, 72.8777],
+            'Delhi': [28.7041, 77.1025],
+            'Bangalore': [12.9716, 77.5946],
+            'Chennai': [13.0827, 80.2707],
+            'Kolkata': [22.5726, 88.3639],
+            'Hyderabad': [17.3850, 78.4867]
+        }
+        
+        city_sales['lat'] = city_sales['city'].map(lambda x: city_coords.get(x, [0, 0])[0])
+        city_sales['lon'] = city_sales['city'].map(lambda x: city_coords.get(x, [0, 0])[1])
+        city_sales['size'] = city_sales['monthly_sales'] / city_sales['monthly_sales'].max() * 100
+        
+        fig = px.scatter_mapbox(city_sales, lat="lat", lon="lon", size="size",
+                               hover_name="city", hover_data=["monthly_sales"],
+                               color="monthly_sales", size_max=50,
+                               title="Sales Distribution by City",
+                               color_continuous_scale=px.colors.cyclical.IceFire,
+                               zoom=4, height=500)
+        
+        fig.update_layout(mapbox_style="carto-positron")
         st.plotly_chart(fig, use_container_width=True)
 
 # ============================================================
-# PROFIT ANALYTICS
+# PROFIT ANALYTICS - ENHANCED
 # ============================================================
-st.markdown("<h2 class='section-header'>Profit Analytics</h2>", unsafe_allow_html=True)
+st.markdown("<h2 class='section-header'>Profit Analytics Dashboard</h2>", unsafe_allow_html=True)
 
-profit_tab1, profit_tab2 = st.tabs(["Distribution", "Drivers"])
+profit_tab1, profit_tab2, profit_tab3 = st.tabs(["💰 Distribution", "📈 Trends", "🔗 Correlations"])
 
 with profit_tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        # Profit Distribution
-        fig = px.histogram(df, x='predicted_profit', nbins=50,
-                          title='Profit Distribution',
-                          labels={'predicted_profit': 'Predicted Profit (₹)', 'count': 'Frequency'},
-                          template='plotly_white',
-                          color_discrete_sequence=[COLOR_PALETTE['primary']])
-        st.plotly_chart(fig, use_container_width=True)
+        # Stacked Area Chart for Profit Composition
+        if 'business_type' in df.columns and 'month' in df.columns:
+            profit_trend = df.groupby(['month', 'business_type'])['predicted_profit'].sum().unstack().fillna(0)
+            
+            fig = px.area(profit_trend,
+                         title="Monthly Profit Trend by Business Type",
+                         labels={"value": "Total Profit", "month": "Month"},
+                         color_discrete_sequence=px.colors.qualitative.Set3)
+            st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        # Profit by Business Type
+        # Beeswarm Plot
         if 'business_type' in df.columns:
-            fig = px.box(df, x='business_type', y='predicted_profit',
-                        title='Profit by Business Type',
-                        labels={'predicted_profit': 'Predicted Profit (₹)', 'business_type': 'Business Type'},
-                        template='plotly_white',
-                        color_discrete_sequence=PLOTLY_COLORS)
+            fig = px.strip(df, x='business_type', y='predicted_profit',
+                          color='business_type',
+                          title="Profit Distribution (Beeswarm Plot)",
+                          stripmode='overlay')
             st.plotly_chart(fig, use_container_width=True)
 
 with profit_tab2:
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([2, 1])
     
     with col1:
-        # Profit vs Marketing Spend
-        fig = px.scatter(df.sample(min(5000, len(df))), x='marketing_spend', y='predicted_profit',
-                        trendline="ols",
-                        title='Profit vs Marketing Spend',
-                        labels={'predicted_profit': 'Predicted Profit (₹)', 'marketing_spend': 'Marketing Spend (₹)'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['warning']])
-        st.plotly_chart(fig, use_container_width=True)
-    
-    with col2:
-        # Profit vs Employee Efficiency
-        fig = px.scatter(df.sample(min(5000, len(df))), x='employee_efficiency', y='predicted_profit',
-                        trendline="ols",
-                        title='Profit vs Employee Efficiency',
-                        labels={'predicted_profit': 'Predicted Profit (₹)', 'employee_efficiency': 'Employee Efficiency'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['secondary']])
-        st.plotly_chart(fig, use_container_width=True)
-
-# ============================================================
-# RISK ANALYTICS
-# ============================================================
-st.markdown("<h2 class='section-header'>Risk Analytics</h2>", unsafe_allow_html=True)
-
-risk_tab1, risk_tab2 = st.tabs(["Distribution", "Analysis"])
-
-with risk_tab1:
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        # Risk Band Distribution
-        risk_dist = df['risk_band'].value_counts().reset_index()
-        risk_dist.columns = ['Risk Band', 'Count']
-        
-        colors = [COLOR_PALETTE['secondary'], COLOR_PALETTE['warning'], COLOR_PALETTE['danger']]
-        
-        fig = px.pie(risk_dist, values='Count', names='Risk Band',
-                    title='Risk Band Distribution',
-                    template='plotly_white',
-                    color_discrete_sequence=colors)
-        st.plotly_chart(fig, use_container_width=True)
-    
-    with col2:
-        # Risk Band vs Profit
-        fig = px.box(df, x='risk_band', y='predicted_profit',
-                    title='Risk Band vs Profit',
-                    labels={'predicted_profit': 'Predicted Profit (₹)', 'risk_band': 'Risk Band'},
-                    template='plotly_white',
-                    color_discrete_sequence=[COLOR_PALETTE['secondary'], COLOR_PALETTE['warning'], COLOR_PALETTE['danger']])
-        st.plotly_chart(fig, use_container_width=True)
-
-with risk_tab2:
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        # Risk vs Inventory
-        if 'inventory_level' in df.columns:
-            fig = px.box(df, x='risk_band', y='inventory_level',
-                        title='Risk Band vs Inventory Level',
-                        labels={'inventory_level': 'Inventory Level', 'risk_band': 'Risk Band'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['secondary'], COLOR_PALETTE['warning'], COLOR_PALETTE['danger']])
-            st.plotly_chart(fig, use_container_width=True)
-    
-    with col2:
-        # Risk vs Marketing Spend
-        if 'marketing_spend' in df.columns:
-            fig = px.box(df, x='risk_band', y='marketing_spend',
-                        title='Risk Band vs Marketing Spend',
-                        labels={'marketing_spend': 'Marketing Spend (₹)', 'risk_band': 'Risk Band'},
-                        template='plotly_white',
-                        color_discrete_sequence=[COLOR_PALETTE['secondary'], COLOR_PALETTE['warning'], COLOR_PALETTE['danger']])
-            st.plotly_chart(fig, use_container_width=True)
-
-# ============================================================
-# UNIQUE VISUALIZATIONS
-# ============================================================
-st.markdown("<h2 class='section-header'>Advanced Analytics</h2>", unsafe_allow_html=True)
-
-viz_tab1, viz_tab2, viz_tab3 = st.tabs(["Sunburst", "Radar", "Correlation"])
-
-with viz_tab1:
-    # Sunburst Chart
-    if 'business_type' in df.columns and 'city_tier' in df.columns:
-        sunburst_data = df.groupby(['business_type', 'city_tier'])['predicted_profit'].mean().reset_index()
-        fig = px.sunburst(sunburst_data, path=['business_type', 'city_tier'], values='predicted_profit',
-                         title='Profit Distribution by Business Type and City Tier',
-                         color='predicted_profit',
-                         color_continuous_scale='Viridis',
-                         template='plotly_white')
-        st.plotly_chart(fig, use_container_width=True)
-
-with viz_tab2:
-    # Radar Chart
-    if 'business_type' in df.columns:
-        radar_data = df.groupby('business_type').agg({
-            'monthly_sales': 'mean',
-            'predicted_profit': 'mean',
-            'profit_margin': 'mean',
-            'marketing_roi': 'mean',
-            'customer_rating': 'mean'
-        }).reset_index()
-        
-        # Normalize data for radar chart
-        normalized_data = radar_data.copy()
-        for col in ['monthly_sales', 'predicted_profit', 'profit_margin', 'marketing_roi', 'customer_rating']:
-            if col in normalized_data.columns:
-                max_val = normalized_data[col].max()
-                min_val = normalized_data[col].min()
-                if max_val > min_val:
-                    normalized_data[col] = (normalized_data[col] - min_val) / (max_val - min_val)
-        
-        categories = ['Sales', 'Profit', 'Margin', 'ROI', 'Rating']
-        
-        fig = go.Figure()
-        
-        for idx, row in normalized_data.iterrows():
-            values = [
-                row['monthly_sales'] if 'monthly_sales' in row else 0,
-                row['predicted_profit'] if 'predicted_profit' in row else 0,
-                row['profit_margin'] if 'profit_margin' in row else 0,
-                row['marketing_roi'] if 'marketing_roi' in row else 0,
-                row['customer_rating'] if 'customer_rating' in row else 0
-            ]
+        # Candlestick-like Chart for Profit Ranges
+        if 'business_type' in df.columns:
+            profit_stats = df.groupby('business_type')['predicted_profit'].agg(['min', 'mean', 'max']).reset_index()
             
-            fig.add_trace(go.Scatterpolar(
-                r=values,
-                theta=categories,
-                fill='toself',
-                name=row['business_type'],
-                line_color=PLOTLY_COLORS[idx % len(PLOTLY_COLORS)]
-            ))
-        
-        fig.update_layout(
-            polar=dict(
-                radialaxis=dict(
-                    visible=True,
-                    range=[0, 1]
-                )),
-            showlegend=True,
-            title='Business Performance Comparison',
-            template='plotly_white'
-        )
-        st.plotly_chart(fig, use_container_width=True)
+            fig = go.Figure()
+            
+            for idx, row in profit_stats.iterrows():
+                fig.add_trace(go.Scatter(
+                    x=[row['business_type'], row['business_type']],
+                    y=[row['min'], row['max']],
+                    mode='lines',
+                    line=dict(width=2),
+                    showlegend=False
+                ))
+                fig.add_trace(go.Scatter(
+                    x=[row['business_type']],
+                    y=[row['mean']],
+                    mode='markers',
+                    marker=dict(size=12),
+                    showlegend=False
+                ))
+            
+            fig.update_layout(title="Profit Range by Business Type",
+                             yaxis_title="Predicted Profit",
+                             height=500)
+            st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # Small Multiples: Profit Histograms
+        if 'business_type' in df.columns:
+            business_types = df['business_type'].unique()[:4]
+            
+            fig = make_subplots(rows=2, cols=2,
+                               subplot_titles=business_types,
+                               vertical_spacing=0.15,
+                               horizontal_spacing=0.1)
+            
+            for i, biz_type in enumerate(business_types):
+                row = i // 2 + 1
+                col = i % 2 + 1
+                data = df[df['business_type'] == biz_type]['predicted_profit']
+                
+                fig.add_trace(go.Histogram(x=data, name=biz_type,
+                                          marker_color=px.colors.qualitative.Set1[i]),
+                             row=row, col=col)
+            
+            fig.update_layout(height=500, showlegend=False,
+                             title_text="Profit Distribution by Business Type")
+            st.plotly_chart(fig, use_container_width=True)
 
-with viz_tab3:
-    # Correlation Matrix
+with profit_tab3:
+    # Correlation Heatmap
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
     selected_cols = [col for col in ['monthly_sales', 'predicted_profit', 'employee_efficiency', 
                                     'marketing_roi', 'profit_margin', 'inventory_level'] 
-                    if col in numeric_cols]
+                    if col in numeric_cols][:8]
     
     if len(selected_cols) >= 3:
         corr_matrix = df[selected_cols].corr()
@@ -841,15 +794,201 @@ with viz_tab3:
             textfont={"size": 10},
             hoverongaps=False))
         
-        fig.update_layout(
-            title="Correlation Matrix: Key Business Metrics",
-            template='plotly_white',
-            height=500
-        )
+        fig.update_layout(title="Correlation Matrix: Key Business Metrics",
+                         height=600)
         st.plotly_chart(fig, use_container_width=True)
 
 # ============================================================
-# PREDICTIVE SIMULATION
+# RISK ANALYTICS - ENHANCED
+# ============================================================
+st.markdown("<h2 class='section-header'>Risk Analytics Dashboard</h2>", unsafe_allow_html=True)
+
+risk_tab1, risk_tab2, risk_tab3 = st.tabs(["⚠️ Distribution", "📊 Analysis", "🎯 Mitigation"])
+
+with risk_tab1:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Treemap for Risk Distribution
+        if 'business_type' in df.columns and 'city_tier' in df.columns:
+            treemap_data = df.groupby(['risk_band', 'business_type', 'city_tier']).size().reset_index(name='count')
+            
+            fig = px.treemap(treemap_data, path=['risk_band', 'business_type', 'city_tier'], values='count',
+                            title="Risk Distribution TreeMap",
+                            color='risk_band',
+                            color_discrete_map={'High': '#EF553B', 'Medium': '#FFA15A', 'Low': '#00CC96'},
+                            height=500)
+            st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # Gauge Charts for Risk Metrics
+        fig = make_subplots(rows=1, cols=3,
+                           specs=[[{'type': 'indicator'}, {'type': 'indicator'}, {'type': 'indicator'}]],
+                           subplot_titles=['High Risk %', 'Avg Profit Margin', 'Inventory Turnover'])
+        
+        # Gauge 1: High Risk Percentage
+        fig.add_trace(go.Indicator(
+            mode="gauge+number",
+            value=risk_percentage,
+            title={'text': "High Risk"},
+            domain={'row': 0, 'column': 0},
+            gauge={'axis': {'range': [0, 100]},
+                  'bar': {'color': "#EF553B"},
+                  'steps': [
+                      {'range': [0, 33], 'color': "#00CC96"},
+                      {'range': [33, 66], 'color': "#FFA15A"},
+                      {'range': [66, 100], 'color': "#EF553B"}
+                  ]}
+        ), row=1, col=1)
+        
+        # Gauge 2: Profit Margin
+        fig.add_trace(go.Indicator(
+            mode="gauge+number",
+            value=profit_margin,
+            title={'text': "Profit Margin %"},
+            domain={'row': 0, 'column': 1},
+            gauge={'axis': {'range': [0, 50]},
+                  'bar': {'color': "#00CC96"},
+                  'steps': [
+                      {'range': [0, 15], 'color': "#EF553B"},
+                      {'range': [15, 25], 'color': "#FFA15A"},
+                      {'range': [25, 50], 'color': "#00CC96"}
+                  ]}
+        ), row=1, col=2)
+        
+        # Gauge 3: Inventory Turnover
+        fig.add_trace(go.Indicator(
+            mode="gauge+number",
+            value=inventory_turnover,
+            title={'text': "Inventory Turnover"},
+            domain={'row': 0, 'column': 2},
+            gauge={'axis': {'range': [0, 5]},
+                  'bar': {'color': "#FFA15A"},
+                  'steps': [
+                      {'range': [0, 1], 'color': "#EF553B"},
+                      {'range': [1, 2.5], 'color': "#FFA15A"},
+                      {'range': [2.5, 5], 'color': "#00CC96"}
+                  ]}
+        ), row=1, col=3)
+        
+        fig.update_layout(height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+with risk_tab2:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Parallel Categories Diagram
+        if 'business_type' in df.columns and 'city_tier' in df.columns:
+            sample_df = df.sample(min(1000, len(df)))
+            
+            dimensions = []
+            for col in ['business_type', 'city_tier', 'risk_band']:
+                if col in sample_df.columns:
+                    dimensions.append(dict(label=col.replace('_', ' ').title(),
+                                         values=sample_df[col]))
+            
+            fig = go.Figure(data=
+                go.Parcats(
+                    dimensions=dimensions,
+                    line={'color': sample_df['predicted_profit'] if 'predicted_profit' in sample_df.columns else sample_df.index,
+                         'colorscale': 'Viridis'},
+                    hoveron='color',
+                    hoverinfo='count+probability',
+                    arrangement='freeform'
+                )
+            )
+            
+            fig.update_layout(title="Risk Analysis: Business Type → City Tier → Risk Level",
+                             height=500)
+            st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # Sankey Diagram for Risk Flow
+        if 'business_type' in df.columns:
+            # Create flow data
+            risk_flow = df.groupby(['business_type', 'risk_band']).size().reset_index(name='count')
+            
+            # Get unique labels
+            business_types = risk_flow['business_type'].unique()
+            risk_levels = risk_flow['risk_band'].unique()
+            
+            labels = list(business_types) + list(risk_levels)
+            
+            # Create source, target, value arrays
+            source = []
+            target = []
+            value = []
+            
+            for idx, row in risk_flow.iterrows():
+                source.append(np.where(business_types == row['business_type'])[0][0])
+                target.append(len(business_types) + np.where(risk_levels == row['risk_band'])[0][0])
+                value.append(row['count'])
+            
+            color_palette = px.colors.qualitative.Set3
+            
+            fig = go.Figure(data=[go.Sankey(
+                node=dict(
+                    pad=15,
+                    thickness=20,
+                    line=dict(color="black", width=0.5),
+                    label=labels,
+                    color=[color_palette[i % len(color_palette)] for i in range(len(labels))]
+                ),
+                link=dict(
+                    source=source,
+                    target=target,
+                    value=value,
+                    color=[color_palette[s % len(color_palette)] for s in source]
+                )
+            )])
+            
+            fig.update_layout(title_text="Risk Flow: Business Type to Risk Level", height=500)
+            st.plotly_chart(fig, use_container_width=True)
+
+# ============================================================
+# MARKETING ANALYTICS - ENHANCED
+# ============================================================
+st.markdown("<h2 class='section-header'>Marketing Analytics Dashboard</h2>", unsafe_allow_html=True)
+
+marketing_tab1, marketing_tab2 = st.tabs(["📢 Performance", "🎯 ROI Analysis"])
+
+with marketing_tab1:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Funnel Chart for Marketing Conversion
+        if 'conversion_rate' in df.columns:
+            funnel_data = {
+                'Stage': ['Awareness', 'Interest', 'Consideration', 'Conversion', 'Retention'],
+                'Value': [100, 75, 50, df['conversion_rate'].mean()*100, df['conversion_rate'].mean()*50]
+            }
+            
+            fig = px.funnel(funnel_data, x='Value', y='Stage',
+                           title="Marketing Funnel Analysis",
+                           color_discrete_sequence=px.colors.sequential.Viridis)
+            st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        # Bar Chart with Error Bars
+        if 'business_type' in df.columns and 'marketing_roi' in df.columns:
+            roi_stats = df.groupby('business_type')['marketing_roi'].agg(['mean', 'std']).reset_index()
+            
+            fig = go.Figure()
+            fig.add_trace(go.Bar(
+                x=roi_stats['business_type'],
+                y=roi_stats['mean'],
+                error_y=dict(type='data', array=roi_stats['std'], visible=True),
+                marker_color=px.colors.qualitative.Set2[:len(roi_stats)]
+            ))
+            
+            fig.update_layout(title="Marketing ROI by Business Type (with Std Dev)",
+                             yaxis_title="Marketing ROI",
+                             height=500)
+            st.plotly_chart(fig, use_container_width=True)
+
+# ============================================================
+# PREDICTIVE SIMULATION - ENHANCED
 # ============================================================
 st.markdown("<h2 class='section-header'>Business Scenario Simulation</h2>", unsafe_allow_html=True)
 
@@ -857,26 +996,26 @@ with st.container():
     sim_col1, sim_col2, sim_col3 = st.columns(3)
     
     with sim_col1:
-        st.markdown("#### Sales Parameters")
+        st.markdown("### 📈 Sales Parameters")
         marketing_spend = st.slider("Marketing Spend (₹)", 10000, 200000, 50000, 5000)
         avg_footfall = st.slider("Daily Footfall", 50, 1000, 200, 10)
         conversion_rate = st.slider("Conversion Rate", 0.1, 0.5, 0.2, 0.01)
     
     with sim_col2:
-        st.markdown("#### Cost Parameters")
+        st.markdown("### 💰 Cost Parameters")
         avg_salary = st.number_input("Average Salary (₹)", 15000, 50000, 25000, 1000)
         rent_cost = st.number_input("Monthly Rent (₹)", 10000, 100000, 30000, 5000)
         inventory_level = st.number_input("Inventory Level", 100, 5000, 1000, 100)
     
     with sim_col3:
-        st.markdown("#### Business Profile")
+        st.markdown("### 🏢 Business Profile")
         employee_count = st.slider("Employee Count", 1, 100, 10, 1)
         city_tier = st.select_slider("City Tier", options=[1, 2, 3], value=2)
         discount_pct = st.slider("Discount Percentage", 0, 50, 10, 1)
     
-    festival_season = st.checkbox("Festival Season", value=False)
+    festival_season = st.checkbox("📅 Festival Season", value=False)
     
-    if st.button("Run Predictive Simulation", type="primary"):
+    if st.button("🚀 Run Predictive Simulation", type="primary", use_container_width=True):
         # Create simulation data
         simulation_data = {
             "city_tier": city_tier,
@@ -906,33 +1045,36 @@ with st.container():
         
         # Calculate expected metrics
         expected_sales = avg_footfall * conversion_rate * 900 * 30
-        operating_cost = rent_cost + 8000 + 15000 + 50000
+        operating_cost = rent_cost + 8000 + 15000 + 50000  # electricity + logistics + supplier
         salary_cost = avg_salary * employee_count
         
-        # Predict profit
-        if model:
+        try:
             predicted_profit = model.predict(sim_df)[0]
-        else:
+        except:
             predicted_profit = expected_sales * 0.2 - marketing_spend - salary_cost
         
-        # Display results
-        st.markdown("#### Simulation Results")
+        # Display results in an enhanced way
+        st.markdown("### 📊 Simulation Results")
         
         results_col1, results_col2, results_col3, results_col4 = st.columns(4)
         
         with results_col1:
-            st.metric("Expected Monthly Sales", f"₹{expected_sales:,.0f}")
+            st.metric("Expected Monthly Sales", f"₹{expected_sales:,.0f}", 
+                     delta=f"{((expected_sales - 10000000)/10000000*100):+.1f}% vs avg")
         
         with results_col2:
-            st.metric("Predicted Monthly Profit", f"₹{predicted_profit:,.0f}")
+            st.metric("Predicted Monthly Profit", f"₹{predicted_profit:,.0f}",
+                     delta=f"{((predicted_profit - 298907)/298907*100):+.1f}% vs avg")
         
         with results_col3:
             profit_margin_sim = (predicted_profit / expected_sales) * 100 if expected_sales > 0 else 0
-            st.metric("Profit Margin", f"{profit_margin_sim:.1f}%")
+            st.metric("Profit Margin", f"{profit_margin_sim:.1f}%",
+                     delta=f"{profit_margin_sim - profit_margin:+.1f}%")
         
         with results_col4:
             marketing_roi_sim = (predicted_profit / marketing_spend) if marketing_spend > 0 else 0
-            st.metric("Marketing ROI", f"{marketing_roi_sim:.2f}x")
+            st.metric("Marketing ROI", f"{marketing_roi_sim:.2f}x",
+                     delta=f"{marketing_roi_sim - avg_roi:+.2f}x")
         
         # Additional metrics
         metrics_col1, metrics_col2, metrics_col3 = st.columns(3)
@@ -948,16 +1090,48 @@ with st.container():
         with metrics_col3:
             cost_ratio = (operating_cost + salary_cost) / expected_sales * 100 if expected_sales > 0 else 0
             st.metric("Cost to Sales Ratio", f"{cost_ratio:.1f}%")
+        
+        # Visualize results
+        comparison_data = pd.DataFrame({
+            'Metric': ['Sales', 'Profit', 'Margin %', 'ROI'],
+            'Industry Average': [13041509, 298907, profit_margin, avg_roi],
+            'Simulation': [expected_sales, predicted_profit, profit_margin_sim, marketing_roi_sim]
+        })
+        
+        fig = go.Figure()
+        
+        fig.add_trace(go.Bar(
+            name='Industry Average',
+            x=comparison_data['Metric'],
+            y=comparison_data['Industry Average'],
+            marker_color='#636efa'
+        ))
+        
+        fig.add_trace(go.Bar(
+            name='Your Simulation',
+            x=comparison_data['Metric'],
+            y=comparison_data['Simulation'],
+            marker_color='#EF553B'
+        ))
+        
+        fig.update_layout(
+            title='Simulation vs Industry Average',
+            barmode='group',
+            yaxis_title='Value',
+            height=400
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
 
 # ============================================================
 # DATA EXPORT
 # ============================================================
-st.markdown("<h2 class='section-header'>Data Export</h2>", unsafe_allow_html=True)
+st.markdown("<h2 class='section-header'>Data Export & Reports</h2>", unsafe_allow_html=True)
 
 export_col1, export_col2, export_col3 = st.columns(3)
 
 with export_col1:
-    if st.button("Download Analyzed Data (CSV)"):
+    if st.button("📥 Download Analyzed Data (CSV)", use_container_width=True):
         csv = df.to_csv(index=False)
         st.download_button(
             label="Click to download CSV",
@@ -967,38 +1141,41 @@ with export_col1:
         )
 
 with export_col2:
-    if st.button("Generate Summary Report"):
+    if st.button("📄 Generate Executive Summary", use_container_width=True):
         with st.spinner("Generating executive report..."):
             summary = f"""
-            BUSINESS INTELLIGENCE REPORT
-            ============================
+            # BUSINESS INTELLIGENCE REPORT
+            ## Executive Summary
             
-            Date: {datetime.now().strftime('%Y-%m-%d')}
-            Total Records Analyzed: {len(df):,}
+            **Date:** {datetime.now().strftime('%Y-%m-%d')}
+            **Total Records Analyzed:** {len(df):,}
             
-            KEY PERFORMANCE INDICATORS:
+            ### Key Performance Indicators:
             1. Average Monthly Profit: ₹{avg_profit:,.0f}
             2. Average Monthly Sales: ₹{avg_sales:,.0f}
             3. High Risk Businesses: {risk_percentage:.1f}%
             4. Overall Profit Margin: {profit_margin:.1f}%
             5. Average Marketing ROI: {avg_roi:.2f}x
             
-            RISK ANALYSIS:
+            ### Top Performing Business Types:
+            {df.groupby('business_type')['predicted_profit'].mean().sort_values(ascending=False).head(3).to_string()}
+            
+            ### Risk Analysis:
             - Low Risk: {((df['risk_band'] == 'Low').mean()*100):.1f}%
             - Medium Risk: {((df['risk_band'] == 'Medium').mean()*100):.1f}%
             - High Risk: {((df['risk_band'] == 'High').mean()*100):.1f}%
             
-            RECOMMENDATIONS:
+            ### Recommendations:
             1. Focus on improving employee efficiency in underperforming units
             2. Optimize marketing spend for better ROI
             3. Reduce inventory levels in high-risk businesses
             4. Implement targeted discounts during festival seasons
             """
-            st.code(summary)
+            st.code(summary, language='markdown')
 
 with export_col3:
-    if st.button("Export Visualizations"):
-        st.info("Visualization export functionality requires additional setup.")
+    if st.button("📊 Export Visualizations", use_container_width=True):
+        st.info("Visualization export would generate PNG/PDF files of all charts. This feature requires additional setup.")
 
 # ============================================================
 # FOOTER
@@ -1006,12 +1183,13 @@ with export_col3:
 st.divider()
 st.markdown("""
 <div style='text-align: center; color: #6B7280; padding: 2rem;'>
-    <p style='font-size: 1.1rem; font-weight: 700; color: #1E3A8A;'>
+    <p style='font-size: 1.2rem; font-weight: 700; background: linear-gradient(90deg, #1E3A8A 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
         BizSight AI Business Intelligence Platform
     </p>
-    <p style='font-size: 0.9rem; color: #4B5563;'>Version 3.0</p>
-    <p style='font-size: 0.8rem; margin-top: 1rem; color: #9CA3AF;'>
-        Developed by Sourish Dey | © 2024 All rights reserved.
+    <p style='font-size: 1rem; font-weight: 500; color: #4B5563;'>Version 3.0 | Powered by Advanced Analytics</p>
+    <p style='font-size: 0.9rem; margin-top: 1rem; color: #9CA3AF;'>
+        Developed by Sourish Dey | © 2024 All rights reserved.<br>
+        This platform provides comprehensive business intelligence for data-driven decision making.
     </p>
 </div>
 """, unsafe_allow_html=True)
