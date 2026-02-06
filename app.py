@@ -1695,7 +1695,7 @@ if data_loaded:
                     'predicted_profit': 'mean',
                     'rent_cost': 'mean',
                     'customer_rating': 'mean'
-                }).resetindex()
+                }).reset_index()
                 
                 fig = make_subplots(
                     rows=2, cols=2,
@@ -2779,3 +2779,4 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+
