@@ -1840,11 +1840,11 @@ if st.session_state.data_loaded and st.session_state.df is not None:
             </a>
         </div>
         <p style='font-size: 0.9rem; margin-top: 2rem; color: #9CA3AF;'>
-            Developed by Sourish Dey | © 2024 All rights reserved.
+            Developed by Sourish Dey | Part Of Infosys Springboard | © 2024 All rights reserved.
         </p>
         <p style='font-size: 0.8rem; color: #D1D5DB; margin-top: 0.5rem;'>
             This platform features comprehensive business analytics with machine learning capabilities.
-            Total lines of code: 3000+ | Processing time: < 2 seconds
+              Processing time: < 2 seconds
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -1905,4 +1905,5 @@ auto_refresh = st.sidebar.checkbox("Auto-refresh data (every 30s)", value=False)
 if auto_refresh:
     st.sidebar.info("Auto-refresh enabled")
     st.rerun()
+
 
