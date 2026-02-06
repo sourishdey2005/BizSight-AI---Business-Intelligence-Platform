@@ -389,8 +389,8 @@ bizsight-ai/
 **Project Supervisor**
 Infosys Springboard
 Infosys Limited
-Internship Program (3 Months)
-Grade: **A+ (Outstanding)**
+Internship Program 
+
 
 ---
 
