@@ -1246,7 +1246,7 @@ if data_loaded:
     # ============================================================
     # COMPREHENSIVE VISUALIZATION DASHBOARD - FROM FIRST CODE (30 VISUALIZATIONS)
     # ============================================================
-    st.markdown("<h2 class='section-header'>Comprehensive Analytics Dashboard - Version 1</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Comprehensive Analytics Dashboard </h2>", unsafe_allow_html=True)
 
     # Create tabs for different visualization categories from first code
     viz_tabs1 = st.tabs([
@@ -1993,7 +1993,7 @@ if data_loaded:
     # ============================================================
     # ADVANCED VISUALIZATION DASHBOARD - FROM SECOND CODE (10 TABS)
     # ============================================================
-    st.markdown("<h2 class='section-header'>Advanced Analytics Dashboard - Version 2</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Advanced Analytics Dashboard </h2>", unsafe_allow_html=True)
 
     # Create comprehensive tabs from second code
     viz_tabs2 = st.tabs([
@@ -2779,4 +2779,5 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+
 
