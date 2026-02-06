@@ -2661,30 +2661,8 @@ if data_loaded:
     # ============================================================
     with st.expander("🎯 Advanced Features", expanded=False):
         st.markdown("""
-        ### What's New in Combined Version:
+        ### What's New in Version:
         
-        #### 📊 48+ Visualizations:
-        From Version 1 (30 visualizations):
-        1. Sales Conversion Funnel
-        2. Geographic Heatmaps
-        3. Risk Probability Distribution
-        4. 3D Scatter Plots
-        5. Parallel Coordinates
-        6. Waterfall Charts
-        7. Radar Charts
-        8. Cluster Analysis
-        9. Time Series Forecasting
-        10. Correlation Matrices
-        
-        From Version 2 (18 visualizations):
-        11. Performance Radar Charts
-        12. Business Health Dashboard
-        13. Financial Analysis
-        14. Workforce Analytics
-        15. Inventory & Operations
-        16. Marketing Efficiency
-        17. Predictive Analytics
-        18. Executive Summary Dashboards
         
         #### 🔧 Enhanced Features:
         - **Dual data sources**: Upload or use sample data
@@ -2779,5 +2757,6 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
