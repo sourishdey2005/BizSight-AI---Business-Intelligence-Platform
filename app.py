@@ -1430,7 +1430,7 @@ def create_bump_chart(df):
         ranked['month'] = month
         monthly_data.append(ranked)
     
-    if not monthly_
+    if not monthly_data:
         return None
     
     bump_df = pd.concat(monthly_data)
@@ -2619,4 +2619,5 @@ if st.session_state.data_loaded and st.session_state.df is not None:
             st.cache_data.clear()
             st.cache_resource.clear()
             st.success("Cache cleared successfully!")
+
 
