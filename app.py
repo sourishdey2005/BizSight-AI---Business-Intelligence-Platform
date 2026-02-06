@@ -935,7 +935,7 @@ def create_stream_graph(df):
         monthly_sales['business_type'] = business_type
         stream_data.append(monthly_sales)
     
-    if stream_
+    if stream_data:
         stream_df = pd.concat(stream_data)
         stream_df = stream_df.sort_values('month_year')
         
@@ -2619,3 +2619,4 @@ if st.session_state.data_loaded and st.session_state.df is not None:
             st.cache_data.clear()
             st.cache_resource.clear()
             st.success("Cache cleared successfully!")
+
