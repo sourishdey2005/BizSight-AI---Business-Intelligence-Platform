@@ -1738,23 +1738,23 @@ if not st.session_state.data_loaded:
             </div>
             """, unsafe_allow_html=True)
     
-    # Load data if selected
-    if uploaded_file or use_sample_
-        with st.spinner("🔄 Loading and processing data... This may take 15-30 seconds for large datasets"):
-            if uploaded_file:
-                df_raw = load_custom_data(uploaded_file)
-                if df_raw is not None:
-                    st.session_state.df_raw, st.session_state.df = process_data(df_raw)
-                    st.session_state.data_loaded = True
-                    st.rerun()
-            elif use_sample_
-                with st.spinner("Generating comprehensive sample dataset with 50,000+ records..."):
-                    df_raw = load_sample_data()
-                    st.session_state.df_raw, st.session_state.df = process_data(df_raw)
-                    st.session_state.data_loaded = True
-                    st.rerun()
-    
-    st.stop()
+   # Load data if selected
+if uploaded_file or use_sample_data:  # 1. Added full variable name and colon
+    with st.spinner("🔄 Loading and processing data... This may take 15-30 seconds for large datasets"):
+        if uploaded_file:
+            df_raw = load_custom_data(uploaded_file)
+            if df_raw is not None:
+                st.session_state.df_raw, st.session_state.df = process_data(df_raw)
+                st.session_state.data_loaded = True
+                st.rerun()
+        elif use_sample_data:         # 2. Added full variable name and colon
+            with st.spinner("Generating comprehensive sample dataset with 50,000+ records..."):
+                df_raw = load_sample_data()
+                st.session_state.df_raw, st.session_state.df = process_data(df_raw)
+                st.session_state.data_loaded = True
+                st.rerun()
+
+st.stop()
 
 # ============================================================
 # MAIN DASHBOARD - DATA LOADED
@@ -2619,5 +2619,6 @@ if st.session_state.data_loaded and st.session_state.df is not None:
             st.cache_data.clear()
             st.cache_resource.clear()
             st.success("Cache cleared successfully!")
+
 
 
