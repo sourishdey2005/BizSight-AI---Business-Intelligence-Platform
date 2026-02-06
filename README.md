@@ -1,7 +1,3 @@
-<img width="5604" height="1247" alt="Architecture" src="https://github.com/user-attachments/assets/a80fb385-ff58-468d-9cf3-3b921f3f028c" />
-<img width="688" height="1000" alt="flow" src="https://github.com/user-attachments/assets/0f81e623-b004-495c-ba4d-a355b7ff8e5a" />
-
-
 # 📊 BizSight AI — Intelligent Business Intelligence Platform
 
 ## 📋 Table of Contents
